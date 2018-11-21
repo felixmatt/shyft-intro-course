@@ -5,8 +5,8 @@ from shyft import api
 
 class TestData():
     def __init__(self):
-        self.met_filename = r"test_data\06191500_lump_cida_forcing_leap.txt"
-        self.streamflow_filename = r"test_data\06191500_streamflow_qc.txt"
+        self.met_filename = r"test_data/06191500_lump_cida_forcing_leap.txt"
+        self.streamflow_filename = r"test_data/06191500_streamflow_qc.txt"
         self._station_info, self._df_met = self._get_met_data_from_camels_database()
         self._df_streamflow = self._get_streamflow_data_from_camels_database()
         self.temperature = self._df_met['temperature'].values
