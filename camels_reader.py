@@ -39,7 +39,7 @@ class TestData():
 
     def _get_streamflow_data_from_camels_database(self):
         keys = ['sgid','Year','Month', 'Day', 'discharge', 'quality']
-        df = pd.read_table(self.streamflow_filename, names=keys, delim_whitespace=True)
+        df = pd.read_table(self.streamflow_filename, names=keys, sep='\s+')
         time = self._get_utc_time_from_daily_camels_streamgauge(df.Year, df.Month, df.Day)
         df['time'] = time
         df.discharge.values[df.discharge.values == -999] = np.nan
