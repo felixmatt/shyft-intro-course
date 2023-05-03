@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from shyft import api
+from shyft.time_series import Calendar
 
 class TestData():
     def __init__(self):
@@ -48,11 +48,11 @@ class TestData():
         return df
 
     def _get_utc_time_from_daily_camels_met(self, datestr_lst):
-        utc = api.Calendar()
+        utc = Calendar()
         time = [utc.time(*[int(i) for i in date.split(' ')]).seconds for date in datestr_lst]
         return np.array(time) - 12*3600 # shift by 12 hours TODO: working nicer?
 
     def _get_utc_time_from_daily_camels_streamgauge(self, year, month, day):
-        utc = api.Calendar()
+        utc = Calendar()
         time = [utc.time(int(y), int(m), int(d)).seconds for y,m,d in zip(year, month, day)]
         return np.array(time)
